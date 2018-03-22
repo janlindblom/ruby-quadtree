@@ -1,5 +1,23 @@
 require "bundler/setup"
 require "quadtree"
+require 'securerandom'
+
+def create_random_point
+  Quadtree::Point.new(-100.0 + SecureRandom.random_number(200.0),
+                      -100.0 + SecureRandom.random_number(200.0))
+end
+
+def create_point_getaboden
+  Quadtree::Point.new(19.8470050, 60.3747940)
+end
+
+def create_point_mattssons
+  Quadtree::Point.new(19.9895930, 60.2302620)
+end
+
+def create_random_aabb
+  Quadtree::AxisAlignedBoundingBox.new(create_random_point, SecureRandom.random_number(100.0))
+end
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

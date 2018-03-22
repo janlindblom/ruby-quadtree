@@ -1,12 +1,30 @@
 module Quadtree
+  # A Quadtree
   class Quadtree
+
+    # Arbitrary constant to indicate how many elements can be stored in this
+    # quad tree node.
+    # @return [Integer]
     NODE_CAPACITY = 4
+
+    # Axis-aligned bounding box stored as a center with half-dimensions to
+    # represent the boundaries of this quad tree.
+    # @return [AxisAlignedBoundingBox]
     attr_accessor :boundary
+
+    # Points in this quad tree node.
+    # @return [Array<Point>]
     attr_accessor :points
 
+    # Children
+
+    # @return [Quadtree]
     attr_accessor :north_west
+    # @return [Quadtree]
     attr_accessor :north_east
+    # @return [Quadtree]
     attr_accessor :south_west
+    # @return [Quadtree]
     attr_accessor :south_east
 
     def initialize(boundary)
@@ -18,7 +36,8 @@ module Quadtree
       @south_east = nil
     end
 
-
+    # @param [Point] point
+    # @return [Boolean]
     def insert(point)
       return false unless @boundary.contains_point? point
 
@@ -36,6 +55,18 @@ module Quadtree
       false
     end
 
+    # Finds all points contained within a range.
+    #
+    # @param [AxisAlignedBoundingBox] range the range to search within.
+    # @return [Array<Point>]
+    def query_range(range)
+      points_in_range = []
+
+    end
+
+    private
+
+    # @return [Boolean]
     def subdivide!
       left_edge = @boundary.left
       right_edge = @boundary.right
@@ -59,10 +90,8 @@ module Quadtree
       @south_east = Quadtree::Quadtree.new south_east_boundary
 
       true
-    end
-
-    def query_range(range)
-
+    rescue
+      false
     end
   end
 end
