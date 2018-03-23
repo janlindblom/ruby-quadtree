@@ -7,10 +7,10 @@ RSpec.describe Quadtree::AxisAlignedBoundingBox do
     @aabb = Quadtree::AxisAlignedBoundingBox.new(@center, @half_dim)
     @getaboden = create_point_getaboden
     @mattssons = create_point_mattssons
-    @aabb_getaboden = Quadtree::AxisAlignedBoundingBox.new(@getaboden, @getaboden.distance_to(@mattssons) / 2)
-    @aabb_mattssons = Quadtree::AxisAlignedBoundingBox.new(@mattssons, @getaboden.distance_to(@mattssons) / 2)
-    @aabb_getaboden_small = Quadtree::AxisAlignedBoundingBox.new(@getaboden, @getaboden.distance_to(@mattssons) / 4)
-    @aabb_mattssons_small = Quadtree::AxisAlignedBoundingBox.new(@mattssons, @getaboden.distance_to(@mattssons) / 4)
+    @aabb_getaboden = create_aabb_getaboden
+    @aabb_mattssons = create_aabb_mattssons
+    @aabb_getaboden_small = create_aabb_getaboden_small
+    @aabb_mattssons_small = create_aabb_mattssons_small
   end
 
   it "has the correct type" do

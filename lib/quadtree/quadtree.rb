@@ -42,7 +42,7 @@ module Quadtree
       return false unless @boundary.contains_point? point
 
       if points.size < NODE_CAPACITY
-        points << point
+        @points << point
         return true
       end
 
@@ -60,8 +60,27 @@ module Quadtree
     # @param [AxisAlignedBoundingBox] range the range to search within.
     # @return [Array<Point>]
     def query_range(range)
+      # Prepare an array of results
       points_in_range = []
 
+      # Automatically abort if the range does not intersect this quad
+      return points_in_range unless @boundary.intersects?(range)
+
+      # Check objects at this quad level
+      @points.each do |point|
+        points_in_range << point if range.contains_point?(point)
+      end
+
+      # Terminate here, if there are no children
+      return points_in_range if @north_west.nil?
+
+      # Otherwise, add the points from the children
+      points_in_range += @north_west.query_range(range)
+      points_in_range += @north_east.query_range(range)
+      points_in_range += @south_west.query_range(range)
+      points_in_range += @south_east.query_range(range)
+
+      points_in_range
     end
 
     private
