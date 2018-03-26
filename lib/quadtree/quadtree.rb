@@ -47,10 +47,10 @@ module Quadtree
       end
 
       subdivide! if @north_west.nil?
-      return true if @north_west.insert(point)
-      return true if @north_east.insert(point)
-      return true if @south_west.insert(point)
-      return true if @south_east.insert(point)
+      return true if @north_west.insert!(point)
+      return true if @north_east.insert!(point)
+      return true if @south_west.insert!(point)
+      return true if @south_east.insert!(point)
 
       false
     end

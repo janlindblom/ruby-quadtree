@@ -5,6 +5,7 @@ image: ruby:2.4.0
 pipelines:
   default:
     - step:
+        name: Ruby 2.4
         caches:
           - bundler
         script:
