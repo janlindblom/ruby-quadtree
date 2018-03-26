@@ -1,0 +1,16 @@
+# This is a sample build configuration for Ruby.
+# Check our guides at https://confluence.atlassian.com/x/8r-5Mw for more examples.
+image: ruby:2.4.0
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - bundler
+        script:
+          - bundle install
+          - bundle exec rake spec
+
+definitions:
+  caches:
+    bundler: ./vendor
