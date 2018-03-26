@@ -8,16 +8,17 @@ module Quadtree
       # @return [Float] Y coordinate
       attr_accessor :y
 
-      # Payload attached to this {Point}.
+      # @return [Object] Payload attached to this {Point}.
       attr_accessor :data
 
       # Create a new {Point}.
       #
-      # @param [Float] x X coordinate
-      # @param [Float] y Y coordinate
+      # @param [Float, Numeric] x X coordinate.
+      # @param [Float, Numeric] y Y coordinate.
+      # @param [Object] data {Point} payload (optional).
       def initialize(x, y, data=nil)
-        @x = x
-        @y = y
+        @x = x.to_f
+        @y = y.to_f
         @data = data unless data.nil?
       end
 
@@ -48,17 +49,17 @@ module Quadtree
         # earth's radius
         r = 6371 * 1000.0
         # coverting degrees to radians
-        lat1 = self.y * (Math::PI / 180)
-        lat2 = other.y * (Math::PI / 180)
-        dlat = (other.y - self.y) * (Math::PI / 180)
-        dlon = (other.x - self.x) * (Math::PI / 180)
+        lat1 = self.y * (Math::PI / 180.0)
+        lat2 = other.y * (Math::PI / 180.0)
+        dlat = (other.y - self.y) * (Math::PI / 180.0)
+        dlon = (other.x - self.x) * (Math::PI / 180.0)
 
         # a = sin²(Δφ/2) + cos φ_1 ⋅ cos φ_2 ⋅ sin²(Δλ/2)
-        a = Math.sin(dlat / 2) * Math.sin(dlat / 2) +
+        a = Math.sin(dlat / 2.0) * Math.sin(dlat / 2.0) +
             Math.cos(lat1) * Math.cos(lat2) *
-            Math.sin(dlon / 2) * Math.sin(dlon / 2)
+            Math.sin(dlon / 2.0) * Math.sin(dlon / 2.0)
         # c = 2 ⋅ atan2( √a, √(1−a) )
-        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+        c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
         # d = R ⋅ c
         return r * c
       end
