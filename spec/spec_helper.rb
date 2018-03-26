@@ -28,11 +28,11 @@ def create_aabb_mattssons
 end
 
 def create_aabb_getaboden_small
-  Quadtree::AxisAlignedBoundingBox.new(create_point_getaboden, create_point_getaboden.haversine_distance_to(create_point_mattssons) / 4)
+  Quadtree::AxisAlignedBoundingBox.new(create_point_getaboden, create_point_getaboden.haversine_distance_to(create_point_mattssons) / 8)
 end
 
 def create_aabb_mattssons_small
-  Quadtree::AxisAlignedBoundingBox.new(create_point_mattssons, create_point_mattssons.haversine_distance_to(create_point_getaboden) / 4)
+  Quadtree::AxisAlignedBoundingBox.new(create_point_mattssons, create_point_mattssons.haversine_distance_to(create_point_getaboden) / 8)
 end
 
 def create_random_aabb
