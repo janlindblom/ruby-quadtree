@@ -1,5 +1,7 @@
 # Quadtree
 
+[![Gem Version](https://badge.fury.io/rb/quadtree.svg)](https://badge.fury.io/rb/quadtree)
+
 Quadtrees in Ruby. For searching spatially related nodes in some space, you know.
 
 ## Installation
