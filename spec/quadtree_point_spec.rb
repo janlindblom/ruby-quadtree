@@ -20,6 +20,10 @@ RSpec.describe Quadtree::Point do
     expect(@point.y).to be_a Float
   end
 
+  it "can carry a payload" do
+    expect(@point.respond_to?(:data)).to be true
+  end
+
   it "can find the general distance to another point" do
     expect(@mattssons.distance_to(@getaboden)).to eq 0.20302915250771117
     expect(@mattssons.distance_to(@getaboden)).to be_a Float

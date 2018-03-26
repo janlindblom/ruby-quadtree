@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jan Lindblom"]
   spec.email         = ["jan.lindblom@mittmedia.se"]
 
-  spec.summary       = %q{A short summary, because RubyGems requires one.}
+  spec.summary       = %q{Quadtrees in Ruby.}
   spec.homepage      = "https://bitbucket.org/janlindblom/ruby-quadtree"
   spec.license       = "MIT"
 
@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.16"
+  spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry", "~> 0.11"
