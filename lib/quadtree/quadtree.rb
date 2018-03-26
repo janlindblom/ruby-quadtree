@@ -38,8 +38,8 @@ module Quadtree
 
     # @param [Point] point
     # @return [Boolean]
-    def insert(point)
-      return false unless @boundary.contains_point? point
+    def insert!(point)
+      return false unless @boundary.contains_point?(point)
 
       if points.size < NODE_CAPACITY
         @points << point

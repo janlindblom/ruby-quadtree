@@ -11,6 +11,10 @@ def create_point_getaboden
   Quadtree::Point.new(19.8470050, 60.3747940)
 end
 
+def create_point_knutnas
+  Quadtree::Point.new(19.8271170, 60.3505570)
+end
+
 def create_point_mattssons
   Quadtree::Point.new(19.9895930, 60.2302620)
 end
