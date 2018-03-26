@@ -28,11 +28,6 @@ RSpec.describe Quadtree::Quadtree do
     expect(@qt_geta_small.insert!(@knutnas)).to be true
   end
 
-  it "won't hold points that doesn't belong within the boundary" do
-    expect(@qt_geta.insert!(@mattssons)).to be false
-    expect(@qt_finstrom.insert!(@getaboden)).to be false
-  end
-
   it "can find all points within a range" do
     @qt_geta.insert! @knutnas
     res = @qt_geta.query_range(@aabb_getaboden)
