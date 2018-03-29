@@ -1,8 +1,8 @@
 # Quadtree
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/quadtree`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Gem Version](https://badge.fury.io/rb/quadtree.svg)](https://badge.fury.io/rb/quadtree)
 
-TODO: Delete this and the text above, and describe your gem
+Quadtrees in Ruby. For searching spatially related nodes in some space, you know.
 
 ## Installation
 
@@ -22,7 +22,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Load it in your code to start building quadtrees:
+
+```ruby
+require 'quadtree'
+
+boundary = Quadtree::AxisAlignedBoundingBox.new(Quadtree::Point.new(19.8470050, 60.3747940), 8944.0)
+qt = Quadtree::Quadtree.new(boundary)
+```
+
+Then you can do lookups and such:
+
+```ruby
+getaboden = Quadtree::Point.new(19.8470050, 60.3747940, "Getaboden")
+knutnas = Quadtree::Point.new(19.8271170, 60.3505570, "Knutnäs")
+boundary = Quadtree::AxisAlignedBoundingBox.new(Quadtree::Point.new(19.8470050, 60.3747940), 8944.0)
+boundary2 = Quadtree::AxisAlignedBoundingBox.new(Quadtree::Point.new(19.8470050, 60.3747940), 4472.0)
+qt.insert! getaboden
+qt.insert! knutnas
+qt.query_range(boundary2)
+# [#<Quadtree::Point:0x00007fdcb19e0698 @data="Getaboden", @x=19.847005, @y=60.374794>,
+ #<Quadtree::Point:0x00007fdcb19ec7b8 @data="Knutnäs", @x=19.827117, @y=60.350557>]
+```
 
 ## Development
 
@@ -32,7 +53,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/quadtree. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on Bitbucket at https://bitbucket.org/janlindblom/ruby-quadtree. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

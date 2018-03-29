@@ -1,3 +1,4 @@
 module Quadtree
-  VERSION = "0.1.0"
+  # Current version
+  VERSION = "1.0.4"
 end
