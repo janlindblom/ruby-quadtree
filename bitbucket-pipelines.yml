@@ -8,7 +8,9 @@ pipelines:
           - bundler
         script:
           - bundle install --path ./vendor
+          - bundle exec rake build
           - bundle exec rake spec
+          - bundle exec rake yard
 
 definitions:
   caches:
