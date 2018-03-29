@@ -1,10 +1,10 @@
 module Quadtree
-  # A Quadtree
+  # A Quadtree.
   class Quadtree
 
     # Arbitrary constant to indicate how many elements can be stored in this
     # quad tree node.
-    # @return [Integer]
+    # @return [Integer] number of {Point}s this {Quadtree} can hold.
     NODE_CAPACITY = 4
 
     # Axis-aligned bounding box stored as a center with half-dimensions to
@@ -18,15 +18,23 @@ module Quadtree
 
     # Children
 
+    # North west corner of this quad.
     # @return [Quadtree]
     attr_accessor :north_west
+
+    # North east corner of this quad.
     # @return [Quadtree]
     attr_accessor :north_east
+
+    # South west corner of this quad.
     # @return [Quadtree]
     attr_accessor :south_west
+
+    # South east corner of this quad.
     # @return [Quadtree]
     attr_accessor :south_east
 
+    # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}
     def initialize(boundary)
       self.boundary = boundary
       self.points = []
@@ -36,8 +44,10 @@ module Quadtree
       self.south_east = nil
     end
 
-    # @param [Point] point
-    # @return [Boolean]
+    # Insert a {Point} in this {Quadtree}.
+    #
+    # @param point [Point] the point to insert.
+    # @return [Boolean] +true+ on success, +false+ otherwise.
     def insert!(point)
       return false unless self.boundary.contains_point?(point)
 
@@ -57,7 +67,7 @@ module Quadtree
 
     # Finds all points contained within a range.
     #
-    # @param [AxisAlignedBoundingBox] range the range to search within.
+    # @param range [AxisAlignedBoundingBox] the range to search within.
     # @return [Array<Point>]
     def query_range(range)
       # Prepare an array of results

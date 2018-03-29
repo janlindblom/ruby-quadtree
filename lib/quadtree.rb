@@ -6,7 +6,6 @@ require "quadtree/quadtree"
 
 # Quadtrees.
 #
-# @since 1.0.0
 # @author Jan Lindblom <janlindblom@fastmail.fm>
 module Quadtree
 
