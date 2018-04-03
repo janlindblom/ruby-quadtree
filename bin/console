@@ -3,5 +3,13 @@
 require "bundler/setup"
 require "quadtree"
 
+def create_random_point
+  Quadtree::Point.new(-100.0 + SecureRandom.random_number(200.0),
+                      -100.0 + SecureRandom.random_number(200.0))
+end
+
+@getaboden = Quadtree::Point.new(19.8470050, 60.3747940)
+@mattssons = Quadtree::Point.new(19.9895930, 60.2302620)
+
 require "pry"
 Pry.start

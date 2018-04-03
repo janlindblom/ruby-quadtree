@@ -3,25 +3,29 @@ module Quadtree
     class Point
 
       # The X coordinate of this instance.
-      # @return [Float] X coordinate.
+      # @return [Float, Integer] X coordinate.
       attr_accessor :x
 
       # The Y coordinate of this instance.
-      # @return [Float] Y coordinate.
+      # @return [Float, Integer] Y coordinate.
       attr_accessor :y
 
       # Optional payload attached to this instance.
       # @return [Object] payload attached to this instance.
       attr_accessor :data
 
-      # @param x [Float, Numeric] X coordinate.
-      # @param y [Float, Numeric] Y coordinate.
+      # @param x [Float, Integer] X coordinate.
+      # @param y [Float, Integer] Y coordinate.
       # @param data [Object] payload payload attached to this instance
       #   (optional).
+      # @raise [UnknownTypeError] if one or more input parameters (+x+ and +y+)
+      #   has the wrong type.
       def initialize(x, y, data=nil)
-        @x = x.to_f
-        @y = y.to_f
-        @data = data unless data.nil?
+
+        self.x = get_typed_numeric(x)
+        self.y = get_typed_numeric(y)
+
+        self.data = data unless data.nil?
       end
 
       # This will calculate distance to another {Point}, given that they are
@@ -66,6 +70,38 @@ module Quadtree
         c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
         # d = R ⋅ c
         return r * c
+      end
+
+      private
+
+      def get_typed_numeric(any_input)
+        typed_output = nil
+        # Try integer first since float will parse integers too
+        return get_integer(any_input) unless get_integer(any_input).nil?
+        # Try Float next
+        return get_float(any_input) unless get_float(any_input).nil?
+
+        raise UnknownTypeError.new "Unknown type for parameter: #{any_input.class}"
+
+        #typed_output
+      end
+
+      def get_integer(any_input)
+        return Integer(any_input) if any_input.is_a? String
+        return any_input if any_input.is_a? Integer
+
+        nil
+      rescue
+        nil
+      end
+
+      def get_float(any_input)
+        return Float(any_input) if any_input.is_a? String
+        return any_input if any_input.is_a? Float
+
+        nil
+      rescue
+        nil
       end
     end
 end
