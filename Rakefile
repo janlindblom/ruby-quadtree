@@ -23,7 +23,10 @@ spec = Gem::Specification.new do |s|
   s.license       = "MIT"
 
   s.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features|.editorconfig|.travis.yml|bitbucket-pipelines.yml|.rspec|.gitignore)/})
+    f.match(%r{^(bin|test|spec|features)/}) ||
+    f == ".travis.yml" ||
+    f == "bitbucket-pipelines.yml" ||
+    f == "buildspec.yml"
   end
   s.bindir        = "exe"
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
