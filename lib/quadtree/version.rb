@@ -1,4 +1,5 @@
+require "version"
+
 module Quadtree
-  # Current version
-  VERSION = "1.0.4"
+  is_versioned
 end

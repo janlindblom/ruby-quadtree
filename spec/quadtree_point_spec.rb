@@ -3,6 +3,7 @@ require 'securerandom'
 RSpec.describe Quadtree::Point do
   before :all do
     @point = create_random_point
+    @integer_point = create_random_integer_point
     @getaboden = create_point_getaboden
     @mattssons = create_point_mattssons
   end
@@ -14,10 +15,12 @@ RSpec.describe Quadtree::Point do
 
   it "has an X coordinate" do
     expect(@point.x).to be_a Float
+    expect(@integer_point.x).to be_a Integer
   end
 
   it "has a Y coordinate" do
     expect(@point.y).to be_a Float
+    expect(@integer_point.y).to be_a Integer
   end
 
   it "can carry a payload" do

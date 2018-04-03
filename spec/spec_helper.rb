@@ -7,6 +7,11 @@ def create_random_point
                       -100.0 + SecureRandom.random_number(200.0))
 end
 
+def create_random_integer_point
+  Quadtree::Point.new((-100.0 + SecureRandom.random_number(200.0)).to_i,
+                      (-100.0 + SecureRandom.random_number(200.0)).to_i)
+end
+
 def create_point_getaboden
   Quadtree::Point.new(19.8470050, 60.3747940)
 end
