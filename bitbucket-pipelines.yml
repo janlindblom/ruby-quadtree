@@ -3,10 +3,23 @@ image: ruby:2.4.0
 pipelines:
   default:
     - step:
-        name: Ruby 2.4
+        name: Ruby 2.3
+        image: ruby:2.3
         caches:
           - bundler
         script:
+          - ruby --version
+          - bundle install --path ./vendor
+          - bundle exec rake build
+          - bundle exec rake spec
+          - bundle exec rake yard
+    - step:
+        name: Ruby 2.4
+        image: ruby:2.4
+        caches:
+          - bundler
+        script:
+          - ruby --version
           - bundle install --path ./vendor
           - bundle exec rake build
           - bundle exec rake spec
