@@ -1,6 +1,7 @@
 # Quadtree
 
 [![Gem Version](https://badge.fury.io/rb/quadtree.svg)](https://badge.fury.io/rb/quadtree)
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoibFBLaWRWODEwbjl4dWV1UWdFUDlKa3dqVkZOb3RJTytBRHg5WVU3bGV6TUdTSjFRSWtRYnVZdC9zWkVvUldTdkMwOFQ2cU8rdGQ4dzFBeFN3UE9jR1g4PSIsIml2UGFyYW1ldGVyU3BlYyI6IkJUSU0rdFJhWXRIbDVzckciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
 
 Quadtrees in Ruby. For searching spatially related nodes in some space, you know.
 
