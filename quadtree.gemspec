@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.bindir = "exe".freeze
   s.date = "2018-04-03"
   s.email = ["janlindblom@fastmail.fm".freeze]
-  s.files = [".editorconfig".freeze, ".gitignore".freeze, ".rspec".freeze, ".travis.yml".freeze, "CODE_OF_CONDUCT.md".freeze, "Gemfile".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "VERSION".freeze, "bin/console".freeze, "bin/setup".freeze, "bitbucket-pipelines.yml".freeze, "lib/quadtree.rb".freeze, "lib/quadtree/axis_aligned_bounding_box.rb".freeze, "lib/quadtree/point.rb".freeze, "lib/quadtree/quadtree.rb".freeze, "lib/quadtree/version.rb".freeze, "quadtree.gemspec".freeze]
+  s.files = [".editorconfig".freeze, ".gitignore".freeze, ".rspec".freeze, ".travis.yml".freeze, "CODE_OF_CONDUCT.md".freeze, "Gemfile".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "VERSION".freeze, "bin/console".freeze, "bin/setup".freeze, "bitbucket-pipelines.yml".freeze, "lib/quadtree.rb".freeze, "lib/quadtree/axis_aligned_bounding_box.rb".freeze, "lib/quadtree/point.rb".freeze, "lib/quadtree/quadtree.rb".freeze, "lib/quadtree/unknown_type_error.rb".freeze, "lib/quadtree/version.rb".freeze, "quadtree.gemspec".freeze]
   s.homepage = "https://bitbucket.org/janlindblom/ruby-quadtree".freeze
   s.licenses = ["MIT".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.4.0".freeze)
