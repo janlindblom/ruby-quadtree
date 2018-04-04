@@ -1,7 +1,9 @@
 # Quadtree
 
-[![Gem Version](https://badge.fury.io/rb/quadtree.svg)](https://badge.fury.io/rb/quadtree)
-![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoibFBLaWRWODEwbjl4dWV1UWdFUDlKa3dqVkZOb3RJTytBRHg5WVU3bGV6TUdTSjFRSWtRYnVZdC9zWkVvUldTdkMwOFQ2cU8rdGQ4dzFBeFN3UE9jR1g4PSIsIml2UGFyYW1ldGVyU3BlYyI6IkJUSU0rdFJhWXRIbDVzckciLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoidk1aMm1Ya212SjRsU1pVdWNVZ2FRTDVPUXlVM2NsY0dWU2UxL1dEUlh2VTdxdURhcmxRK1JDTGg5OXJxeURKeFRiZXV5VEtTbmRBZCt6bTdDTms1Rm5ZPSIsIml2UGFyYW1ldGVyU3BlYyI6ImlUamttMGtUckZRT0tvM0EiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/janlindblom/ruby-quadtree.png)](https://bitbucket.org/janlindblom/ruby-quadtree)
+[![Gem](https://img.shields.io/gem/v/quadtree.png)](https://rubygems.org/gems/quadtree)
+[![Documentation](https://img.shields.io/badge/docs-rdoc.info-yellow.png)](http://www.rubydoc.info/gems/quadtree/frames)
 
 Quadtrees in Ruby. For searching spatially related nodes in some space, you know.
 
