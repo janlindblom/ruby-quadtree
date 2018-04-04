@@ -33,7 +33,7 @@ module Quadtree
     # @return [Quadtree]
     attr_accessor :south_east
 
-    # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}
+    # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}.
     def initialize(boundary)
       self.boundary = boundary
       self.points = []
@@ -64,6 +64,9 @@ module Quadtree
       false
     end
 
+    # Return the size of this instance, the number of {Point}s stored in this
+    #   {Quadtree}.
+    # @return [Integer] the size of this instance.
     def size
       count = 0
       count += points.size
@@ -79,7 +82,7 @@ module Quadtree
     # Finds all points contained within a range.
     #
     # @param range [AxisAlignedBoundingBox] the range to search within.
-    # @return [Array<Point>]
+    # @return [Array<Point>] all {Point}s in given range.
     def query_range(range)
       # Prepare an array of results
       points_in_range = []
@@ -106,7 +109,7 @@ module Quadtree
 
     private
 
-    # @return [Boolean]
+    # @return [Boolean] +true+ on success, +false+ otherwise.
     def subdivide!
       left_edge = boundary.left
       right_edge = boundary.right
