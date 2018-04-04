@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: quadtree 1.0.7a ruby lib
+# stub: quadtree 1.0.7b ruby lib
 
 Gem::Specification.new do |s|
   s.name = "quadtree".freeze
-  s.version = "1.0.7a"
+  s.version = "1.0.7b"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<pry>.freeze, ["~> 0.11"])
       s.add_development_dependency(%q<yard>.freeze, ["~> 0.9"])
       s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.16"])
+      s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.54"])
       s.add_runtime_dependency(%q<version>.freeze, ["~> 1.1"])
     else
       s.add_dependency(%q<bundler>.freeze, ["~> 1.14"])
@@ -36,6 +37,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<pry>.freeze, ["~> 0.11"])
       s.add_dependency(%q<yard>.freeze, ["~> 0.9"])
       s.add_dependency(%q<simplecov>.freeze, ["~> 0.16"])
+      s.add_dependency(%q<rubocop>.freeze, ["~> 0.54"])
       s.add_dependency(%q<version>.freeze, ["~> 1.1"])
     end
   else
@@ -45,6 +47,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<pry>.freeze, ["~> 0.11"])
     s.add_dependency(%q<yard>.freeze, ["~> 0.9"])
     s.add_dependency(%q<simplecov>.freeze, ["~> 0.16"])
+    s.add_dependency(%q<rubocop>.freeze, ["~> 0.54"])
     s.add_dependency(%q<version>.freeze, ["~> 1.1"])
   end
 end

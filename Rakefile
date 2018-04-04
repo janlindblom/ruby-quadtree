@@ -39,6 +39,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency "pry", "~> 0.11"
   s.add_development_dependency "yard", "~> 0.9"
   s.add_development_dependency "simplecov", "~> 0.16"
+  s.add_development_dependency "rubocop", "~> 0.54"
   s.add_runtime_dependency "version", "~> 1.1"
 end
 
@@ -52,6 +53,12 @@ YARD::Rake::YardocTask.new do |t|
   t.stats_options = ['--list-undoc']
 end
 
-RuboCop::RakeTask.new
+RuboCop::RakeTask.new(:rubocop) do |task|
+  task.patterns = ['lib/**/*.rb']
+  # only show the files with failures
+  task.formatters = ['worst']
+  # don't abort rake on failure
+  task.fail_on_error = false
+end
 
 task :default => :spec
