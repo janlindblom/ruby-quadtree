@@ -24,6 +24,17 @@ RSpec.describe Quadtree::AxisAlignedBoundingBox do
     expect(@aabb.center).to eq @center
   end
 
+  it "can check if it contains a point" do
+    expect(@aabb_getaboden_small.contains_point?(@getaboden)).to eq true
+    expect(@aabb_getaboden_small.contains_point?(@mattssons)).to eq false
+  end
+
+  it "can return the width and height" do
+    expect(@aabb_getaboden_small.width).to be_a Float
+    expect(@aabb_getaboden_small.height).to be_a Float
+    expect(@aabb_getaboden_small.width).to eq @aabb_getaboden_small.height
+  end
+
   it "has dimensions" do
     expect(@aabb.half_dimension).not_to be nil
     expect(@aabb.half_dimension).to be_a Float
@@ -37,7 +48,7 @@ RSpec.describe Quadtree::AxisAlignedBoundingBox do
   end
 
   it "can check for intersections" do
-    puts @aabb_getaboden.intersects?(@aabb_mattssons)
-    puts @aabb_getaboden_small.intersects?(@aabb_mattssons_small)
+    expect(@aabb_getaboden.intersects?(@aabb_mattssons)).to eq true
+    expect(@aabb_getaboden_small.intersects?(@aabb_mattssons_small)).to eq false
   end
 end

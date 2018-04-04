@@ -38,4 +38,18 @@ RSpec.describe Quadtree::Quadtree do
       expect(p).to be_a Quadtree::Point
     end
   end
+
+  it "will subdivide itself if added points does not fit" do
+    aabb = create_random_aabb
+    tree = Quadtree::Quadtree.new(aabb)
+    points = 160
+    (1..points).each do |p|
+      expect(tree.insert!(create_random_point_in_aabb(aabb))).to eq true
+    end
+    expect(tree.north_west).not_to be_nil
+    expect(tree.north_east).not_to be_nil
+    expect(tree.south_west).not_to be_nil
+    expect(tree.south_east).not_to be_nil
+    expect(tree.size).to eq points
+  end
 end

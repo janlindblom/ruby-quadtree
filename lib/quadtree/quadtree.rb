@@ -1,7 +1,6 @@
 module Quadtree
   # A Quadtree.
   class Quadtree
-
     # Arbitrary constant to indicate how many elements can be stored in this
     # quad tree node.
     # @return [Integer] number of {Point}s this {Quadtree} can hold.
@@ -34,7 +33,7 @@ module Quadtree
     # @return [Quadtree]
     attr_accessor :south_east
 
-    # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}
+    # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}.
     def initialize(boundary)
       self.boundary = boundary
       self.points = []
@@ -49,69 +48,92 @@ module Quadtree
     # @param point [Point] the point to insert.
     # @return [Boolean] +true+ on success, +false+ otherwise.
     def insert!(point)
-      return false unless self.boundary.contains_point?(point)
+      return false unless boundary.contains_point?(point)
 
-      if self.points.size < NODE_CAPACITY
-        self.points << point
+      if points.size < NODE_CAPACITY
+        points << point
         return true
       end
 
-      subdivide! if self.north_west.nil?
-      return true if self.north_west.insert!(point)
-      return true if self.north_east.insert!(point)
-      return true if self.south_west.insert!(point)
-      return true if self.south_east.insert!(point)
+      subdivide! if north_west.nil?
+      return true if north_west.insert!(point)
+      return true if north_east.insert!(point)
+      return true if south_west.insert!(point)
+      return true if south_east.insert!(point)
 
       false
+    end
+
+    # Return the size of this instance, the number of {Point}s stored in this
+    #   {Quadtree}.
+    # @return [Integer] the size of this instance.
+    def size
+      count = 0
+      count += points.size
+      unless north_west.nil?
+        count += north_west.size
+        count += north_east.size
+        count += south_west.size
+        count += south_east.size
+      end
+      count
     end
 
     # Finds all points contained within a range.
     #
     # @param range [AxisAlignedBoundingBox] the range to search within.
-    # @return [Array<Point>]
+    # @return [Array<Point>] all {Point}s in given range.
     def query_range(range)
       # Prepare an array of results
       points_in_range = []
 
       # Automatically abort if the range does not intersect this quad
-      return points_in_range unless self.boundary.intersects?(range)
+      return points_in_range unless boundary.intersects?(range)
 
       # Check objects at this quad level
-      self.points.each do |point|
+      points.each do |point|
         points_in_range << point if range.contains_point?(point)
       end
 
       # Terminate here, if there are no children
-      return points_in_range if self.north_west.nil?
+      return points_in_range if north_west.nil?
 
       # Otherwise, add the points from the children
-      points_in_range += self.north_west.query_range(range)
-      points_in_range += self.north_east.query_range(range)
-      points_in_range += self.south_west.query_range(range)
-      points_in_range += self.south_east.query_range(range)
+      points_in_range += north_west.query_range(range)
+      points_in_range += north_east.query_range(range)
+      points_in_range += south_west.query_range(range)
+      points_in_range += south_east.query_range(range)
 
       points_in_range
     end
 
     private
 
-    # @return [Boolean]
+    # @return [Boolean] +true+ on success, +false+ otherwise.
     def subdivide!
-      left_edge = self.boundary.left
-      right_edge = self.boundary.right
-      top_edge = self.boundary.top
-      bottom_edge = self.boundary.bottom
-      quad_half_dimension = self.boundary.half_dimension / 2
+      left_edge = boundary.left
+      right_edge = boundary.right
+      top_edge = boundary.top
+      bottom_edge = boundary.bottom
+      quad_half_dimension = boundary.half_dimension / 2
 
-      north_west_center = Point.new left_edge + quad_half_dimension, top_edge - quad_half_dimension
-      north_east_center = Point.new right_edge - quad_half_dimension, top_edge - quad_half_dimension
-      south_east_center = Point.new left_edge + quad_half_dimension, bottom_edge + quad_half_dimension
-      south_west_center = Point.new right_edge - quad_half_dimension, bottom_edge + quad_half_dimension
+      north_west_center = Point.new(left_edge + quad_half_dimension,
+                                    top_edge - quad_half_dimension)
+      north_east_center = Point.new(right_edge - quad_half_dimension,
+                                    top_edge - quad_half_dimension)
+      south_east_center = Point.new(left_edge + quad_half_dimension,
+                                    bottom_edge + quad_half_dimension)
+      south_west_center = Point.new(right_edge - quad_half_dimension,
+                                    bottom_edge + quad_half_dimension)
 
-      north_west_boundary = AxisAlignedBoundingBox.new north_west_center, quad_half_dimension
-      north_east_boundary = AxisAlignedBoundingBox.new north_east_center, quad_half_dimension
-      south_west_boundary = AxisAlignedBoundingBox.new south_west_center, quad_half_dimension
-      south_east_boundary = AxisAlignedBoundingBox.new south_east_center, quad_half_dimension
+      north_west_boundary = AxisAlignedBoundingBox.new(north_west_center,
+                                                       quad_half_dimension)
+      north_east_boundary = AxisAlignedBoundingBox.new(north_east_center,
+                                                       quad_half_dimension)
+      south_west_boundary = AxisAlignedBoundingBox.new(south_west_center,
+                                                       quad_half_dimension)
+      south_east_boundary = AxisAlignedBoundingBox.new(south_east_center,
+                                                       quad_half_dimension)
 
       self.north_west = Quadtree.new north_west_boundary
       self.north_east = Quadtree.new north_east_boundary
@@ -119,8 +141,7 @@ module Quadtree
       self.south_east = Quadtree.new south_east_boundary
 
       true
-    rescue => error
-      puts "Something went wrong: #{error}"
+    rescue StandardError
       false
     end
   end
