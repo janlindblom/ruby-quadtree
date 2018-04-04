@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rspec>.freeze, ["~> 3.0"])
       s.add_development_dependency(%q<pry>.freeze, ["~> 0.11"])
       s.add_development_dependency(%q<yard>.freeze, ["~> 0.9"])
+      s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.16"])
       s.add_runtime_dependency(%q<version>.freeze, ["~> 1.1"])
     else
       s.add_dependency(%q<bundler>.freeze, ["~> 1.14"])
@@ -34,6 +35,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rspec>.freeze, ["~> 3.0"])
       s.add_dependency(%q<pry>.freeze, ["~> 0.11"])
       s.add_dependency(%q<yard>.freeze, ["~> 0.9"])
+      s.add_dependency(%q<simplecov>.freeze, ["~> 0.16"])
       s.add_dependency(%q<version>.freeze, ["~> 1.1"])
     end
   else
@@ -42,6 +44,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rspec>.freeze, ["~> 3.0"])
     s.add_dependency(%q<pry>.freeze, ["~> 0.11"])
     s.add_dependency(%q<yard>.freeze, ["~> 0.9"])
+    s.add_dependency(%q<simplecov>.freeze, ["~> 0.16"])
     s.add_dependency(%q<version>.freeze, ["~> 1.1"])
   end
 end

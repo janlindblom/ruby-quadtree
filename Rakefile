@@ -3,8 +3,6 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require "rake/version_task"
 require "bundler/gem_tasks"
-#require "rubygems"
-#require "rubygems/package_task"
 require "rspec/core/rake_task"
 require "yard"
 require "yard/rake/yardoc_task"
@@ -39,6 +37,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "~> 3.0"
   s.add_development_dependency "pry", "~> 0.11"
   s.add_development_dependency "yard", "~> 0.9"
+  s.add_development_dependency "simplecov", "~> 0.16"
   s.add_runtime_dependency "version", "~> 1.1"
 end
 

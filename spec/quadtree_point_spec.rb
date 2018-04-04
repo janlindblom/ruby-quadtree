@@ -36,4 +36,19 @@ RSpec.describe Quadtree::Point do
     expect(@mattssons.haversine_distance_to(@getaboden)).to be_a Float
     expect(@mattssons.haversine_distance_to(@getaboden)).to eq 17888.088005906367
   end
+
+  it "can interpret numbers in strings" do
+    p1 = Quadtree::Point.new "12", "23"
+    p2 = Quadtree::Point.new "12.23", "23.45"
+    expect(p1).to be_a Quadtree::Point
+    expect(p1.x).to eq 12
+    expect(p1.y).to eq 23
+    expect(p2).to be_a Quadtree::Point
+    expect(p2.x).to eq 12.23
+    expect(p2.y).to eq 23.45
+  end
+
+  it "will raise an UnknownTypeError if input is not numeric" do
+    expect{ Quadtree::Point.new("a", "b") }.to raise_error Quadtree::UnknownTypeError
+  end
 end
