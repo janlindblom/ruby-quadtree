@@ -1,9 +1,9 @@
 # -*- encoding: utf-8 -*-
-# stub: quadtree 1.0.7b ruby lib
+# stub: quadtree 1.0.7 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "quadtree".freeze
-  s.version = "1.0.7b"
+  s.version = "1.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
