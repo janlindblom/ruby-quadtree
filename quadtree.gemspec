@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<pry>.freeze, ["~> 0.13"])
       s.add_development_dependency(%q<yard>.freeze, ["~> 0.9"])
       s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.18"])
+      s.add_development_dependency(%q<rspec_junit_formatter>.freeze, ["~> 0.4"])
       s.add_development_dependency(%q<rubocop>.freeze, ["~> 0.85"])
       s.add_runtime_dependency(%q<version>.freeze, ["~> 1.1"])
     else
@@ -37,6 +38,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<pry>.freeze, ["~> 0.13"])
       s.add_dependency(%q<yard>.freeze, ["~> 0.9"])
       s.add_dependency(%q<simplecov>.freeze, ["~> 0.18"])
+      s.add_dependency(%q<rspec_junit_formatter>.freeze, ["~> 0.4"])
       s.add_dependency(%q<rubocop>.freeze, ["~> 0.85"])
       s.add_dependency(%q<version>.freeze, ["~> 1.1"])
     end
@@ -47,6 +49,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<pry>.freeze, ["~> 0.13"])
     s.add_dependency(%q<yard>.freeze, ["~> 0.9"])
     s.add_dependency(%q<simplecov>.freeze, ["~> 0.18"])
+    s.add_dependency(%q<rspec_junit_formatter>.freeze, ["~> 0.4"])
     s.add_dependency(%q<rubocop>.freeze, ["~> 0.85"])
     s.add_dependency(%q<version>.freeze, ["~> 1.1"])
   end
