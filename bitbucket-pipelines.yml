@@ -10,7 +10,8 @@ pipelines:
         script:
           - ruby --version
           - gem install bundler
-          - bundle install --path ./vendor
+          - bundle config set path './vendor'
+          - bundle install
           - bundle exec rake build
           - bundle exec rake yard
           - bundle exec rake rubocop
@@ -23,7 +24,8 @@ pipelines:
         script:
           - ruby --version
           - gem install bundler
-          - bundle install --path ./vendor
+          - bundle config set path './vendor'
+          - bundle install
           - bundle exec rake build
           - bundle exec rake yard
           - bundle exec rake rubocop
