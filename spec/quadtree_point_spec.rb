@@ -51,4 +51,8 @@ RSpec.describe Quadtree::Point do
   it "will raise an UnknownTypeError if input is not numeric" do
     expect{ Quadtree::Point.new("a", "b") }.to raise_error Quadtree::UnknownTypeError
   end
+
+  it "can be serialized into a hash" do
+    expect(@point.to_h).to be_a Hash
+  end
 end
