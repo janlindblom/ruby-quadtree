@@ -3,8 +3,8 @@ image: ruby:2.4.0
 pipelines:
   default:
     - step:
-        name: Ruby 2.3
-        image: ruby:2.3
+        name: Ruby 2.4
+        image: ruby:2.4
         caches:
           - bundler
         script:
@@ -15,8 +15,8 @@ pipelines:
           - bundle exec rake rubocop
           - bundle exec rake spec
     - step:
-        name: Ruby 2.4
-        image: ruby:2.4
+        name: Ruby 2.5
+        image: ruby:2.5
         caches:
           - bundler
         script:
