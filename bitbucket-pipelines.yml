@@ -1,34 +1,62 @@
-image: ruby:2.4.0
+image: ruby:2.4
 
 pipelines:
+  branches:
+    master:
+      - step:
+          name: Build and test current release
+          deployment: production
+          caches:
+            - bundler
+            - docker
+          script:
+            - gem install bundler
+            - bundle config set path './vendor'
+            - bundle install
+            - bundle exec rake build
+            - bundle exec rake yard
+            - bundle exec rake rubocop
+            - bundle exec rake spec
+    develop:
+      - step:
+          name: Test next release
+          deployment: test
+          caches:
+            - bundler
+            - docker
+          script:
+            - gem install bundler
+            - bundle config set path './vendor'
+            - bundle install
+            - bundle exec rake yard
+            - bundle exec rake rubocop
+            - bundle exec rake spec
+    release/*:
+      - step:
+          name: Release preparation
+          deployment: staging
+          caches:
+            - bundler
+            - docker
+          script:
+            - gem install bundler
+            - bundle config set path './vendor'
+            - bundle install
+            - bundle exec rake yard
+            - bundle exec rake rubocop
+            - bundle exec rake spec
+
+
   default:
     - step:
-        name: Ruby 2.4
-        image: ruby:2.4
+        name: Default testing
         caches:
           - bundler
+          - docker
         script:
-          - ruby --version
           - gem install bundler
           - bundle config set path './vendor'
           - bundle install
-          - bundle exec rake build
-          - bundle exec rake yard
-          - bundle exec rake rubocop
-          - bundle exec rake spec
-    - step:
-        name: Ruby 2.5
-        image: ruby:2.5
-        caches:
-          - bundler
-        script:
-          - ruby --version
-          - gem install bundler
-          - bundle config set path './vendor'
-          - bundle install
-          - bundle exec rake build
-          - bundle exec rake yard
-          - bundle exec rake rubocop
           - bundle exec rake spec
 
 definitions:
