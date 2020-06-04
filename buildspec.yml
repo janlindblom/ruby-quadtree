@@ -2,8 +2,11 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      ruby: 2.4
     commands:
-      - gem install bundler
+      - gem uninstall bundler --version '<2.1.4'
+      - gem install bundler --version 2.1.4
   pre_build:
     commands:
       - bundle install
