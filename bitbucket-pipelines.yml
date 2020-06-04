@@ -9,6 +9,7 @@ pipelines:
           - bundler
         script:
           - ruby --version
+          - gem install bundler
           - bundle install --path ./vendor
           - bundle exec rake build
           - bundle exec rake yard
@@ -21,6 +22,7 @@ pipelines:
           - bundler
         script:
           - ruby --version
+          - gem install bundler
           - bundle install --path ./vendor
           - bundle exec rake build
           - bundle exec rake yard
