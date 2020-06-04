@@ -1,5 +1,10 @@
 image: "ruby:2.4"
 
+stages:
+  - build
+  - test
+  - verify
+
 before_script:
   - gem install bundler --version 2.1.4 --no-document
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
@@ -7,15 +12,22 @@ before_script:
 build:
   script:
     - bundle exec rake build
+  artifacts:
+    paths:
+      - pkg/*.gem
 
-spec:
+test:
+  stage: test
   script:
     - bundle exec rake spec
+  artifacts:
+    paths:
+      - spec/reports/rspec.xml
+    reports:
+      junit: spec/reports/rspec.xml
 
-yard:
+verification:
+  stage: test
   script:
     - bundle exec rake yard
-
-rubocop:
-  script:
     - bundle exec rake rubocop
