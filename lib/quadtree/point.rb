@@ -28,6 +28,31 @@ module Quadtree
         self.data = data unless data.nil?
       end
 
+      def to_h
+        {
+          x: x,
+          y: y,
+          data: data.nil? || data.is_a?(Array) || data.is_a?(String) ? data : data.to_h
+        }
+      end
+
+      def to_hash
+        to_h
+      end
+
+      def to_json(*a)
+        require 'json'
+        to_h.to_json(*a)
+      end
+
+      def to_s
+        to_h.to_s
+      end
+
+      def self.from_json(json_data)
+        new(json_data['x'], json_data['y'], json_data['data'])
+      end
+
       # This will calculate distance to another {Point}, given that they are
       # both in the same 2D space.
       #

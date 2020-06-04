@@ -1,11 +1,22 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
+require 'securerandom'
 require "quadtree"
+
+def create_random_aabb
+  Quadtree::AxisAlignedBoundingBox.new(create_random_point, SecureRandom.random_number(100.0))
+end
 
 def create_random_point
   Quadtree::Point.new(-100.0 + SecureRandom.random_number(200.0),
                       -100.0 + SecureRandom.random_number(200.0))
+end
+
+def create_random_point_in_aabb(aabb)
+  Quadtree::Point.new(
+    (aabb.left + SecureRandom.random_number(aabb.right - aabb.left)),
+    (aabb.bottom + SecureRandom.random_number(aabb.top - aabb.bottom)))
 end
 
 @getaboden = Quadtree::Point.new(19.8470050, 60.3747940)

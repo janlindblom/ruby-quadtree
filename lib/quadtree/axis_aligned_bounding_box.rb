@@ -20,6 +20,26 @@ module Quadtree
       @half_dimension = half_dimension.to_f
     end
 
+    def to_h
+      {
+        center: center.to_h,
+        half_dimension: half_dimension
+      }
+    end
+
+    def to_hash
+      to_h
+    end
+
+    def to_json(*a)
+      require 'json'
+      to_h.to_json(*a)
+    end
+
+    def self.from_json(json_data)
+      new(Point.from_json(json_data['center']), json_data['half_dimension'])
+    end
+
     # Check if this instance contains a given {Point}.
     #
     # @param point [Point] the {Point} to check for.

@@ -34,13 +34,44 @@ module Quadtree
     attr_accessor :south_east
 
     # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}.
-    def initialize(boundary)
+    def initialize(boundary, points=[], north_west=nil, north_east=nil, south_west=nil, south_east=nil)
       self.boundary = boundary
-      self.points = []
-      self.north_west = nil
-      self.north_east = nil
-      self.south_west = nil
-      self.south_east = nil
+      self.points = points
+      self.north_west = north_west
+      self.north_east = north_east
+      self.south_west = south_west
+      self.south_east = south_east
+    end
+
+    def to_h
+      {
+        boundary: boundary.to_h,
+        points: points.map{ |point| point.to_h },
+        north_west: north_west.nil? ? nil : north_west.to_h,
+        north_east: north_east.nil? ? nil : north_east.to_h,
+        south_west: south_west.nil? ? nil : south_west.to_h,
+        south_east: south_east.nil? ? nil : south_east.to_h
+      }
+    end
+
+    def to_json(*a)
+      require 'json'
+      to_h.to_json(*a)
+    end
+
+    def to_hash
+      to_h
+    end
+
+    def self.from_json(json_data)
+      new(
+        AxisAlignedBoundingBox.from_json(json_data['boundary']),
+        json_data['points'].map{ |point_data| Point.from_json(point_data) },
+        json_data['north_west'].nil? ? nil : Quadtree.from_json(json_data['north_west']),
+        json_data['north_east'].nil? ? nil : Quadtree.from_json(json_data['north_east']),
+        json_data['south_west'].nil? ? nil : Quadtree.from_json(json_data['south_west']),
+        json_data['south_east'].nil? ? nil : Quadtree.from_json(json_data['south_east'])
+      )
     end
 
     # Insert a {Point} in this {Quadtree}.
