@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Quadtree
   # A Quadtree.
   class Quadtree
@@ -33,8 +35,17 @@ module Quadtree
     # @return [Quadtree]
     attr_accessor :south_east
 
-    # @param boundary [AxisAlignedBoundingBox] the boundary for this {Quadtree}.
-    def initialize(boundary, points=[], north_west=nil, north_east=nil, south_west=nil, south_east=nil)
+    #
+    # Create a new {Quadtree}.
+    #
+    # @param [AxisAlignedBoundingBox] boundary the boundary for this {Quadtree}.
+    # @param [Array<Point>] points any initial {Point}s.
+    # @param [Quadtree] north_west northwestern child {Quadtree}
+    # @param [Quadtree] north_east northeastern child {Quadtree}
+    # @param [Quadtree] south_west southwestern child {Quadtree}
+    # @param [Quadtree] south_east southestern child {Quadtree}
+    #
+    def initialize(boundary, points = [], north_west = nil, north_east = nil, south_west = nil, south_east = nil)
       self.boundary = boundary
       self.points = points
       self.north_west = north_west
@@ -43,30 +54,61 @@ module Quadtree
       self.south_east = south_east
     end
 
+    #
+    # Create a Hash from this {Quadtree}.
+    #
+    # @return [Hash] Hash representation.
+    #
     def to_h
       {
-        boundary: boundary.to_h,
-        points: points.map{ |point| point.to_h },
-        north_west: north_west.nil? ? nil : north_west.to_h,
-        north_east: north_east.nil? ? nil : north_east.to_h,
-        south_west: south_west.nil? ? nil : south_west.to_h,
-        south_east: south_east.nil? ? nil : south_east.to_h
+        'boundary': boundary.to_h,
+        'points': points.map(&:to_h),
+        'north_west': north_west.nil? ? nil : north_west.to_h,
+        'north_east': north_east.nil? ? nil : north_east.to_h,
+        'south_west': south_west.nil? ? nil : south_west.to_h,
+        'south_east': south_east.nil? ? nil : south_east.to_h
       }
     end
 
-    def to_json(*a)
-      require 'json'
-      to_h.to_json(*a)
-    end
-
+    #
+    # Create a Hash from this {Quadtree}.
+    #
+    # @return [Hash] Hash representation of this {Quadtree}.
+    #
     def to_hash
       to_h
     end
 
+    #
+    # Create a JSON String representation of this {Quadtree}.
+    #
+    # @return [String] JSON String of this {Quadtree}.
+    #
+    def to_json(*_args)
+      require 'json'
+      to_h.to_json
+    end
+
+    #
+    # Create a String for this {Quadtree}.
+    #
+    # @return [String] String representation of this {Quadtree}.
+    #
+    def to_s
+      to_h.to_s
+    end
+
+    #
+    # Construct a Quadtree from a JSON String.
+    #
+    # @param [String] json_data input JSON String.
+    #
+    # @return [Quadtree] the {Quadtree} contained in the JSON String.
+    #
     def self.from_json(json_data)
       new(
         AxisAlignedBoundingBox.from_json(json_data['boundary']),
-        json_data['points'].map{ |point_data| Point.from_json(point_data) },
+        json_data['points'].map { |point_data| Point.from_json(point_data) },
         json_data['north_west'].nil? ? nil : Quadtree.from_json(json_data['north_west']),
         json_data['north_east'].nil? ? nil : Quadtree.from_json(json_data['north_east']),
         json_data['south_west'].nil? ? nil : Quadtree.from_json(json_data['south_west']),
@@ -96,7 +138,8 @@ module Quadtree
     end
 
     # Return the size of this instance, the number of {Point}s stored in this
-    #   {Quadtree}.
+    # {Quadtree}.
+    #
     # @return [Integer] the size of this instance.
     def size
       count = 0

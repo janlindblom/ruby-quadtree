@@ -1,11 +1,13 @@
-require "version"
-require "quadtree/version"
+# frozen_string_literal: true
 
-require "quadtree/unknown_type_error"
+require 'version'
+require 'quadtree/version'
 
-require "quadtree/point"
-require "quadtree/axis_aligned_bounding_box"
-require "quadtree/quadtree"
+require 'quadtree/unknown_type_error'
+
+require 'quadtree/point'
+require 'quadtree/axis_aligned_bounding_box'
+require 'quadtree/quadtree'
 
 # Quadtrees.
 #
