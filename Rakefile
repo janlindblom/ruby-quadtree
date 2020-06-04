@@ -28,7 +28,8 @@ spec = Gem::Specification.new do |s|
     f == ".editorconfig" ||
     f == ".rspec" ||
     f == "bitbucket-pipelines.yml" ||
-    f == "buildspec.yml"
+    f == "buildspec.yml" ||
+    f == ".gitlab-ci.yml"
   end
   s.bindir        = "exe"
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
@@ -36,7 +37,7 @@ spec = Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 2.3.0'
 
-  s.add_development_dependency "bundler", ">= 1.14"
+  s.add_development_dependency "bundler", "~> 2"
   s.add_development_dependency "rake", "~> 13.0"
   s.add_development_dependency "rspec", "~> 3.9"
   s.add_development_dependency "pry", "~> 0.13"
