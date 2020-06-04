@@ -8,7 +8,6 @@ pipelines:
           deployment: production
           caches:
             - bundler
-            - docker
           script:
             - gem install bundler
             - bundle config set path './vendor'
@@ -23,7 +22,6 @@ pipelines:
           deployment: test
           caches:
             - bundler
-            - docker
           script:
             - gem install bundler
             - bundle config set path './vendor'
@@ -37,7 +35,6 @@ pipelines:
           deployment: staging
           caches:
             - bundler
-            - docker
           script:
             - gem install bundler
             - bundle config set path './vendor'
@@ -52,7 +49,6 @@ pipelines:
         name: Default testing
         caches:
           - bundler
-          - docker
         script:
           - gem install bundler
           - bundle config set path './vendor'
