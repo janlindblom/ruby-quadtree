@@ -13,4 +13,4 @@ yard:
 
 rubocop:
   script:
-    - bundle exec rubocop
+    - bundle exec rake rubocop
