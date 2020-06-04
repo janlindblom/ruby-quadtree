@@ -1,12 +1,17 @@
-image: "ruby:2.5"
+image: "ruby:2.4"
 
 before_script:
-  - gem install bundler --no-document
+  - gem install bundler --version 2.1.4 --no-document
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
-rspec:
+build:
+  script:
+    - bundle exec rake build
+
+spec:
   script:
     - bundle exec rake spec
+
 yard:
   script:
     - bundle exec rake yard
