@@ -10,6 +10,7 @@ before_script:
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
 build:
+  stage: build
   script:
     - bundle exec rake build
   artifacts:
