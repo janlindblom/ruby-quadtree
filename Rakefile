@@ -18,18 +18,21 @@ spec = Gem::Specification.new do |s|
   s.email         = ["janlindblom@fastmail.fm"]
 
   s.summary       = %q{Quadtrees in Ruby.}
-  s.homepage      = "https://bitbucket.org/janlindblom/ruby-quadtree"
+  s.homepage      = "https://github.com/janlindblom/ruby-quadtree"
   s.license       = "MIT"
 
   s.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(bin|test|spec|features)/}) ||
+    f.match(%r{^(bin|test|spec|features|.github)/}) ||
     f == ".travis.yml" ||
     f == ".gitignore" ||
     f == ".editorconfig" ||
     f == ".rspec" ||
     f == "bitbucket-pipelines.yml" ||
     f == "buildspec.yml" ||
-    f == ".gitlab-ci.yml"
+    f == ".gitlab-ci.yml" ||
+    f == ".rubocop.yml" ||
+    f == ".rubocop_todo.yml" ||
+    f == "Jenkinsfile"
   end
   s.bindir        = "exe"
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
@@ -38,14 +41,14 @@ spec = Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.3.0'
 
   s.add_development_dependency "bundler", "~> 2"
-  s.add_development_dependency "rake", "~> 13.0"
-  s.add_development_dependency "rspec", "~> 3.9"
-  s.add_development_dependency "pry", "~> 0.13"
+  s.add_development_dependency "rake", "~> 13"
+  s.add_development_dependency "rspec", "~> 3"
+  s.add_development_dependency "pry", "~> 0.14"
   s.add_development_dependency "yard", "~> 0.9"
-  s.add_development_dependency "simplecov", "~> 0.18"
-  s.add_development_dependency "rspec_junit_formatter", "~> 0.4"
-  s.add_development_dependency "rubocop", "~> 0.85"
-  s.add_runtime_dependency "version", "~> 1.1"
+  s.add_development_dependency "simplecov", "~> 0.21"
+  s.add_development_dependency "rspec_junit_formatter", "~> 0.6"
+  s.add_development_dependency "rubocop", "~> 1"
+  s.add_runtime_dependency "version", "~> 1"
 end
 
 Rake::VersionTask.new do |task|
