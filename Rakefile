@@ -22,7 +22,7 @@ spec = Gem::Specification.new do |s|
   s.license       = "MIT"
 
   s.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(bin|test|spec|features)/}) ||
+    f.match(%r{^(bin|test|spec|features|.github)/}) ||
     f == ".travis.yml" ||
     f == ".gitignore" ||
     f == ".editorconfig" ||
