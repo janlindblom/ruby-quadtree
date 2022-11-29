@@ -29,7 +29,10 @@ spec = Gem::Specification.new do |s|
     f == ".rspec" ||
     f == "bitbucket-pipelines.yml" ||
     f == "buildspec.yml" ||
-    f == ".gitlab-ci.yml"
+    f == ".gitlab-ci.yml" ||
+    f == ".rubocop.yml" ||
+    f == ".rubocop_todo.yml" ||
+    f == "Jenkinsfile"
   end
   s.bindir        = "exe"
   s.executables   = s.files.grep(%r{^exe/}) { |f| File.basename(f) }
