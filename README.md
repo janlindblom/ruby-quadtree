@@ -1,7 +1,5 @@
 # Quadtree
 
-![Build Status](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoidk1aMm1Ya212SjRsU1pVdWNVZ2FRTDVPUXlVM2NsY0dWU2UxL1dEUlh2VTdxdURhcmxRK1JDTGg5OXJxeURKeFRiZXV5VEtTbmRBZCt6bTdDTms1Rm5ZPSIsIml2UGFyYW1ldGVyU3BlYyI6ImlUamttMGtUckZRT0tvM0EiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
-[![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/janlindblom/ruby-quadtree.png)](https://bitbucket.org/janlindblom/ruby-quadtree)
 [![Gem](https://img.shields.io/gem/v/quadtree.png)](https://rubygems.org/gems/quadtree)
 [![Documentation](https://img.shields.io/badge/docs-rdoc.info-yellow.png)](http://www.rubydoc.info/gems/quadtree/frames)
 
@@ -17,11 +15,15 @@ gem 'quadtree'
 
 And then execute:
 
-    $ bundle
+```bash
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install quadtree
+```bash
+gem install quadtree
+```
 
 ## Usage
 
@@ -56,12 +58,12 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on Bitbucket at https://bitbucket.org/janlindblom/ruby-quadtree. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on Github at <https://github.com/janlindblom/ruby-quadtree>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](https://github.com/janlindblom/ruby-quadtree/blob/master/LICENSE.txt).
 
 ## Code of Conduct
 
-Everyone interacting in the Quadtree project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://bitbucket.org/janlindblom/ruby-quadtree/src/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Quadtree project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/janlindblom/ruby-quadtree/blob/master/CODE_OF_CONDUCT.md).
