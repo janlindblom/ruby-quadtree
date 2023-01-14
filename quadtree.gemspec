@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name = "quadtree".freeze
   s.version = "1.0.9"
 
-  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1".freeze) if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 2".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Jan Lindblom".freeze]
   s.bindir = "exe".freeze
