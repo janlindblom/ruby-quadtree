@@ -28,14 +28,12 @@ test:
 
 yard:
   stage: verify
-  needs: ["build"]
-  parallel: 2
+  needs: ["build", "test"]
   script:
     - bundle exec rake yard
 
 rubocop:
   stage: verify
-  needs: ["build"]
-  parallel: 2
+  needs: ["build", "test"]
   script:
     - bundle exec rake rubocop
