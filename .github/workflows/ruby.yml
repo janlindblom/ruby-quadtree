@@ -24,6 +24,11 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Build
       run: bundle exec rake build
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report
+        path: pkg/*.gem
   test:
     runs-on: ubuntu-latest
     needs: build
@@ -37,8 +42,13 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Test
+    - name: Run tests
       run: bundle exec rake spec
+    - name: Archive test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-report
+        path: test-reports/rspec.xml
   verify:
     runs-on: ubuntu-latest
     needs: test
