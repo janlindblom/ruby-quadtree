@@ -17,7 +17,26 @@ build:
     paths:
       - pkg/*.gem
 
-test:
+test-26:
+  image: "ruby:2.6"
+  stage: test
+  needs: ["build"]
+  script:
+    - bundle exec rake spec
+  artifacts:
+    reports:
+      junit: test-reports/rspec.xml
+test-31:
+  image: "ruby:2.6"
+  stage: test
+  needs: ["build"]
+  script:
+    - bundle exec rake spec
+  artifacts:
+    reports:
+      junit: test-reports/rspec.xml
+test-32:
+  image: "ruby:2.6"
   stage: test
   needs: ["build"]
   script:
@@ -28,12 +47,12 @@ test:
 
 yard:
   stage: verify
-  needs: ["build", "test"]
+  needs: ["build", "test-26", "test-31", "test-32"]
   script:
     - bundle exec rake yard
 
 rubocop:
   stage: verify
-  needs: ["build", "test"]
+  needs: ["build", "test-26", "test-31", "test-32"]
   script:
     - bundle exec rake rubocop
