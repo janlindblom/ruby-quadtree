@@ -47,7 +47,7 @@ jobs:
     - name: Archive test results
       uses: actions/upload-artifact@v3
       with:
-        name: test-report
+        name: test-report ${{ matrix.ruby-version }}
         path: test-reports/rspec.xml
   verify:
     runs-on: ubuntu-latest
