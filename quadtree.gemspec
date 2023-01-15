@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.bindir = "exe".freeze
   s.date = "2023-01-15"
   s.email = ["janlindblom@fastmail.fm".freeze]
-  s.files = [".travis.yml".freeze, "CODE_OF_CONDUCT.md".freeze, "Gemfile".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "VERSION".freeze, "bitbucket-pipelines.yml".freeze, "buildspec.yml".freeze, "lib/quadtree.rb".freeze, "lib/quadtree/axis_aligned_bounding_box.rb".freeze, "lib/quadtree/point.rb".freeze, "lib/quadtree/quadtree.rb".freeze, "lib/quadtree/unknown_type_error.rb".freeze, "lib/quadtree/version.rb".freeze, "quadtree.gemspec".freeze]
+  s.files = ["CODE_OF_CONDUCT.md".freeze, "Gemfile".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "VERSION".freeze, "lib/quadtree.rb".freeze, "lib/quadtree/axis_aligned_bounding_box.rb".freeze, "lib/quadtree/point.rb".freeze, "lib/quadtree/quadtree.rb".freeze, "lib/quadtree/unknown_type_error.rb".freeze, "lib/quadtree/version.rb".freeze, "quadtree.gemspec".freeze]
   s.homepage = "https://github.com/janlindblom/ruby-quadtree".freeze
   s.licenses = ["MIT".freeze]
   s.required_ruby_version = Gem::Requirement.new(">= 2.6.0".freeze)
