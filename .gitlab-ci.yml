@@ -27,8 +27,11 @@ test-26:
   artifacts:
     reports:
       junit: test-reports/rspec.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
 test-31:
-  image: ruby:2.6
+  image: ruby:3.1
   stage: test
   needs:
     - build
@@ -37,8 +40,11 @@ test-31:
   artifacts:
     reports:
       junit: test-reports/rspec.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
 test-32:
-  image: ruby:2.6
+  image: ruby:3.2
   stage: test
   needs:
     - build
@@ -47,6 +53,9 @@ test-32:
   artifacts:
     reports:
       junit: test-reports/rspec.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
 
 yard:
   stage: verify
