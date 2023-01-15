@@ -10,13 +10,11 @@ permissions:
   contents: read
 
 jobs:
-  test:
-
+  build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.1']
-
+        ruby-version: ['3.1', '3.2']
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
@@ -25,5 +23,24 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run tests
+    - name: Build
+      run: bundle exec rake build
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.1', '3.2']
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+    # uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Test
       run: bundle exec rake spec
+    - name: Yard
+      run: bundle exec rake yard
+    - name: Rubocop
+      run: bundle exec rake rubocop
