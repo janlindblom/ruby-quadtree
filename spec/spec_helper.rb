@@ -1,8 +1,14 @@
 require "simplecov"
+require 'simplecov-cobertura'
+
 SimpleCov.minimum_coverage 80
 SimpleCov.minimum_coverage_by_file 45
 SimpleCov.start do
   add_filter "/vendor/"
+  formatter SimpleCov::Formatter::MultiFormatter.new([
+    SimpleCov::Formatter::CoberturaFormatter,
+    SimpleCov::Formatter::HTMLFormatter
+  ])
 end
 
 require "bundler/setup"

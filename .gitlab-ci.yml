@@ -1,12 +1,12 @@
-image: "ruby:2.4"
+image: ruby:3.1
 
 stages:
   - build
-  - test
   - verify
+  - test
 
 before_script:
-  - gem install bundler --version 2.1.4 --no-document
+  - gem install bundler --version 2.4.3 --no-document
   - bundle install --jobs $(nproc)  "${FLAGS[@]}"
 
 build:
@@ -17,21 +17,59 @@ build:
     paths:
       - pkg/*.gem
 
-test:
+test-26:
+  image: ruby:2.6
   stage: test
-  needs: ["build"]
+  needs:
+    - yard
+    - rubocop
   script:
     - bundle exec rake spec
   artifacts:
-    paths:
-      - test-reports/rspec.xml
     reports:
       junit: test-reports/rspec.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
+test-31:
+  image: ruby:3.1
+  stage: test
+  needs:
+    - yard
+    - rubocop
+  script:
+    - bundle exec rake spec
+  artifacts:
+    reports:
+      junit: test-reports/rspec.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
+test-32:
+  image: ruby:3.2
+  stage: test
+  needs:
+    - yard
+    - rubocop
+  script:
+    - bundle exec rake spec
+  artifacts:
+    reports:
+      junit: test-reports/rspec.xml
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/coverage.xml
 
-verification:
+yard:
   stage: verify
-  needs: ["build"]
-  parallel: 2
+  needs:
+    - build
   script:
     - bundle exec rake yard
+
+rubocop:
+  stage: verify
+  needs:
+    - build
+  script:
     - bundle exec rake rubocop
