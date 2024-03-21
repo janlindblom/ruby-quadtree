@@ -59,7 +59,7 @@ jobs:
         detailed_summary: true
 
     - name: Code Coverage Report Ruby ${{ matrix.ruby-version }}
-      uses: irongut/CodeCoverageSummary@v1
+      uses: irongut/CodeCoverageSummary@v1.3.0
       with:
         filename: coverage/coverage.xml
         badge: true
