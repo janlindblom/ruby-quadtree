@@ -17,20 +17,6 @@ build:
     paths:
       - pkg/*.gem
 
-test-26:
-  image: ruby:2.6
-  stage: test
-  needs:
-    - yard
-    - rubocop
-  script:
-    - bundle exec rake spec
-  artifacts:
-    reports:
-      junit: test-reports/rspec.xml
-      coverage_report:
-        coverage_format: cobertura
-        path: coverage/coverage.xml
 test-31:
   image: ruby:3.1
   stage: test
